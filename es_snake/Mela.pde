@@ -6,7 +6,7 @@ public class Mela
   //colore della mela
   private color coloreMela;
   //grandezza della mela
-  private int raggio = 16;
+  private int raggio = 8;
 
   Mela()
   {
@@ -18,7 +18,7 @@ public class Mela
   public void appleShow()  //metodo che disegna la mela sullo schermo
   {
    fill(coloreMela);
-   circle(this.appleX, this.appleY, raggio);
+   circle(this.appleX, this.appleY, raggio * 2);
   }
   
   public void changePosition()    //metodo per cambiare le coordinate della mela quando viene mangiata
