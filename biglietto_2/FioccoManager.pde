@@ -5,13 +5,15 @@
    private float contaFiocchi;            //contatore dei ficchi gia presenti all'interno della schermata
    private float velComparsaFiocchi;      //velocita con cui i fiocchi vengono fatti cadere dall'alto
    private float timerComparsaFiocchi;    //contatore del tempo passato per il conteggio del timer
+   private FioccoDiNeve[] fiocco;
   
   public FioccoManager()
   {
     numFiocchi = 100;            
     contaFiocchi = 0;            
-    velComparsaFiocchi = 100;
+    velComparsaFiocchi = 3;
     timerComparsaFiocchi = 0;
+    fiocco = new FioccoDiNeve[int(getNumFiocchi())];
   }
   
   public float getNumFiocchi (){return numFiocchi;}

@@ -2,28 +2,25 @@
 color sfondo = color(3, random(70)+ 150,250);
 
 // dichiaro tuti gli oggeti di cui ho bisogno
-FioccoManager fm;
-FioccoDiNeve[] fiocchi;
+FioccoManager nevicata;
 
 StellaCometa sc;
 
-AlberoManager alMan;
-Albero[] al;
+AlberoManager foresta;
 
 public void setup(){
   size(700,700);
   background(sfondo);
   // geenro il maanger degli alberi ed istanzio l'array di alberi
-  alMan = new AlberoManager();
-  al = new Albero[int(alMan.getNumAlberi())];
+  foresta = new AlberoManager();
   
   try
   {
     //per la lunghezza dell'array di alberi istanzio un albero
-    for(int p = 0; p < al.length; p++)
+    for(int p = 0; p < foresta.albero.length; p++)
     {
       float altezza = random (100) + 210;    //altezza dell'albero casuale
-      al[p] = new Albero(random(width) ,height, altezza, altezza/2);
+      foresta.albero[p] = new Albero(random(width) ,height, altezza, altezza/2);
     }
   }catch(Exception e)  //se i valori passati al costruttore dell'albero sono negativi
   {System.out.println("i valori passati all'albero non sono accettabili");}
@@ -41,11 +38,11 @@ public void setup(){
   {System.out.println("i valori passati della stella cometa non sono accettabili");}
   
   //creo un fioccomanager e istanzio l'array di fiocchi di grandezza definita all'interno del fioccomanager
-  fm = new FioccoManager();
-  fiocchi = new FioccoDiNeve[int(fm.getNumFiocchi())];
+  nevicata = new FioccoManager();
+  
   //per ogni elemento dell'array fiocchi istanzio un fiocco 
-  for(int i = 0; i < fiocchi.length; i++)
-     fiocchi[i] = new FioccoDiNeve();
+  for(int i = 0; i < nevicata.fiocco.length; i++)
+     nevicata.fiocco[i] = new FioccoDiNeve();
 }
 
 public void draw()
@@ -57,24 +54,24 @@ public void draw()
   sc.muoviCometa();
   
   // per tutti gli alberi, li disegno
-  for(int i = 0; i < al.length; i++)
-    al[i].showAlbero();
+  for(int i = 0; i < foresta.albero.length; i++)
+    foresta.albero[i].showAlbero();
   
   // se il timer dei fiocchi è maggiore del tempo massimo del tempo di comparsa e c'è un fiocco che ha raggiunto il suolo
   
-  if(fm.getTimerComparsaFiocchi() > fm.getVelComparsaFiocchi() && fm.getContaFiocchi() < fm.getNumFiocchi() - 1)
+  if(nevicata.getTimerComparsaFiocchi() > nevicata.getVelComparsaFiocchi() && nevicata.getContaFiocchi() < nevicata.getNumFiocchi() - 1)
   {
     //resetto il timer, aggiorno il contatore del contatore dei fiocchi, e ritiro a caso
     
-    fm.aggiornaContaFiocchi();
-    fiocchi[int(fm.getContaFiocchi())].posizionaFiocco(); 
-    fm.resetTimerComparsaFiocchi();
+    nevicata.aggiornaContaFiocchi();
+    nevicata.fiocco[int(nevicata.getContaFiocchi())].posizionaFiocco(); 
+    nevicata.resetTimerComparsaFiocchi();
   }
   
-  fm.aggiornaTimerComparsaFiocchi();
+  nevicata.aggiornaTimerComparsaFiocchi();
   
   //per tutti i fiocchi, muovo i fiocchi
-  for(int i = 0; i < fiocchi.length; i++)
-      fiocchi[i].movimentoFiocco();
+  for(int i = 0; i < nevicata.getContaFiocchi(); i++)
+      nevicata.fiocco[i].movimentoFiocco();
   
 }

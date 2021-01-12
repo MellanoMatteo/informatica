@@ -2,10 +2,12 @@ class AlberoManager
 {
   //classe per la gestione di tutti gli aspetti che riguardano tutti gli alberi
   private float numAlberi;
+  private Albero[] albero;
   
   public AlberoManager()
   {
     setNumAlberi();
+    albero = new Albero[int(getNumAlberi())];
   }
   
   public void setNumAlberi()
@@ -15,4 +17,5 @@ class AlberoManager
   }
   
   public float getNumAlberi(){return this.numAlberi;}
+  
 }
