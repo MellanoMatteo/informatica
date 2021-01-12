@@ -1,4 +1,4 @@
-public class FioccoManager
+ public class FioccoManager
 {
   // classe per gestire l'insieme dei fiocchi di neve, e non il singolo
    private float numFiocchi;              //numero di fiocchi che compaiono nella schermata
@@ -10,15 +10,15 @@ public class FioccoManager
   {
     numFiocchi = 100;            
     contaFiocchi = 0;            
-    velComparsaFiocchi = 3;
-    timerComparsaFiocchi = velComparsaFiocchi + 1;
+    velComparsaFiocchi = 100;
+    timerComparsaFiocchi = 0;
   }
   
   public float getNumFiocchi (){return numFiocchi;}
   
   public float getContaFiocchi (){return contaFiocchi;}
   
-  public float getVelComparsaFiocchi() {return velComparsaFiocchi; }
+  public float getVelComparsaFiocchi() {return velComparsaFiocchi;}
   
   public float getTimerComparsaFiocchi () {return timerComparsaFiocchi;}
   

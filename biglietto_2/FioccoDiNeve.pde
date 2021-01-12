@@ -17,7 +17,6 @@ class FioccoDiNeve
    {
        value = '*';
        posizionaFiocco();    //posiziono il fiocco di neve in una posto a caso al di sopra della schermata 
-       
    }
    
    public float getAltezza(){ return this.altezza; }

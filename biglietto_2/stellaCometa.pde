@@ -49,7 +49,7 @@ public class StellaCometa{
   public void showCometa()
   {
     fill(coloreStella);
-    noStroke();
+    
     //triangle(x1,y1,x2,y2,x3,y3) 
     //coda della stella
     triangle(x, y, x, y + altezza,x + lunghezza*2/3,  y + altezza/2);

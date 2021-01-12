@@ -6,8 +6,8 @@ public class Albero{
   private float h;
   private float larghezza;
   private int numFigure;
-  private color coloreAlbero = color(0,255,0);
-  private color coloreTronco = color(153,76,0);
+  private color coloreAlbero;
+  private color coloreTronco;
   
   
   public Albero(float x, float y, float altezza, float larghezza) throws Exception
@@ -16,10 +16,15 @@ public class Albero{
     setY(y);
     setH(altezza);
     setLarghezza(larghezza);
-    this.numFigure = 6;
+    //numero di trianogli casuali
+    this.numFigure = int(random(4) + 3);  
+    //colore casuale che varia da un verde chiaro ad uno scuro
+    coloreAlbero = color(0,random(155) + 100, 0);
+    //colore del tronco che varia da un marrone chiaro ad un marrone scuro
+    coloreTronco = color (random(70) + 118, random (50) + 51, 0);
   }
   
-  public void setX(float x)  {this.x = x; }
+  public void setX(float x)  {this.x = x;}
   public void setY(float y)  {this.y = y;}
   public void setH(float altezza) throws Exception
   {
