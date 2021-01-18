@@ -1,4 +1,4 @@
- public class FioccoManager
+class FioccoManager
 {
   // classe per gestire l'insieme dei fiocchi di neve, e non il singolo
    private float numFiocchi;              //numero di fiocchi che compaiono nella schermata
@@ -29,5 +29,33 @@
   public void resetTimerComparsaFiocchi() {this.timerComparsaFiocchi = 0;}      //metodo per resettare il conteggio del timer dei fiocchi
   
   public void aggiornaTimerComparsaFiocchi() {this.timerComparsaFiocchi++;}    //metodo epr aggiornare io timer della comparsa dei fiocchi
+  
+  public void nuovoFiocco()
+  {
+    // se il timer è valido e c'è non tutti i fiocchi sono sullo schermo
+    if(getTimerComparsaFiocchi() > getVelComparsaFiocchi() && getContaFiocchi() < getNumFiocchi() - 1)
+    {
+      //resetto il timer, aggiorno il contatore del contatore dei fiocchi, e ritiro a caso
+    
+      aggiornaContaFiocchi();
+      fiocco[int(nevicata.getContaFiocchi())].posizionaFiocco(); 
+      resetTimerComparsaFiocchi();
+    }
+    // in ogni caso aggiorno il timer
+    aggiornaTimerComparsaFiocchi();
+  }
+  
+  public void muoviFiocchi()  //muovo i fiocchi 
+  {
+      for(int i = 0; i < nevicata.getContaFiocchi(); i++)
+        fiocco[i].movimentoFiocco();
+  }
+  
+  public void initFiocchi()
+  {
+    //per ogni elemento dell'array fiocchi istanzio un fiocco 
+    for(int i = 0; i < nevicata.fiocco.length; i++)
+       nevicata.fiocco[i] = new FioccoDiNeve(); 
+  }
 
 }

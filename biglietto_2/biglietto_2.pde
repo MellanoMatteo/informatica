@@ -1,29 +1,23 @@
 //colore a caso del cielo tra le sfumature del blu
 color sfondo = color(3, random(70)+ 150,250);
 
-// dichiaro tuti gli oggeti di cui ho bisogno
+// dichiaro tuti gli oggetti di cui ho bisogno
 FioccoManager nevicata;
-
 StellaCometa sc;
+AlberoManager foresta; 
 
-AlberoManager foresta;
-
-public void setup(){
+public void setup()
+{
   size(700,700);
   background(sfondo);
-  // geenro il maanger degli alberi ed istanzio l'array di alberi
-  foresta = new AlberoManager();
   
-  try
-  {
-    //per la lunghezza dell'array di alberi istanzio un albero
-    for(int p = 0; p < foresta.albero.length; p++)
-    {
-      float altezza = random (100) + 210;    //altezza dell'albero casuale
-      foresta.albero[p] = new Albero(random(width) ,height, altezza, altezza/2);
-    }
-  }catch(Exception e)  //se i valori passati al costruttore dell'albero sono negativi
-  {System.out.println("i valori passati all'albero non sono accettabili");}
+  //creo un fioccomanager e istanzio l'array di fiocchi di grandezza definita all'interno del fioccomanager
+  nevicata = new FioccoManager();
+  nevicata.initFiocchi();
+     
+  // genero il mananger degli alberi ed istanzio l'array di alberi
+  foresta = new AlberoManager();
+  foresta.initAlberi();
   
   //lunghezza casuale della stella
   float lungStella = random(150)+150;
@@ -35,14 +29,9 @@ public void setup(){
     //istanzio una stella cometa, e ci passo i valori al costruttore
     sc = new StellaCometa(lungStella, altezzaStella, 4, 0, random(height/2));
   }catch(Exception e)
-  {System.out.println("i valori passati della stella cometa non sono accettabili");}
-  
-  //creo un fioccomanager e istanzio l'array di fiocchi di grandezza definita all'interno del fioccomanager
-  nevicata = new FioccoManager();
-  
-  //per ogni elemento dell'array fiocchi istanzio un fiocco 
-  for(int i = 0; i < nevicata.fiocco.length; i++)
-     nevicata.fiocco[i] = new FioccoDiNeve();
+  {
+    System.out.println("i valori passati della stella cometa non sono accettabili");
+  }
 }
 
 public void draw()
@@ -53,25 +42,19 @@ public void draw()
   sc.showCometa();
   sc.muoviCometa();
   
-  // per tutti gli alberi, li disegno
-  for(int i = 0; i < foresta.albero.length; i++)
-    foresta.albero[i].showAlbero();
+  // disegno a schermo tutti gli alberi
+  foresta.showForesta();
   
-  // se il timer dei fiocchi è maggiore del tempo massimo del tempo di comparsa e c'è un fiocco che ha raggiunto il suolo
-  
-  if(nevicata.getTimerComparsaFiocchi() > nevicata.getVelComparsaFiocchi() && nevicata.getContaFiocchi() < nevicata.getNumFiocchi() - 1)
-  {
-    //resetto il timer, aggiorno il contatore del contatore dei fiocchi, e ritiro a caso
-    
-    nevicata.aggiornaContaFiocchi();
-    nevicata.fiocco[int(nevicata.getContaFiocchi())].posizionaFiocco(); 
-    nevicata.resetTimerComparsaFiocchi();
-  }
-  
-  nevicata.aggiornaTimerComparsaFiocchi();
+  //disegno tutti i fiocchi
+  nevicata.nuovoFiocco();
   
   //per tutti i fiocchi, muovo i fiocchi
-  for(int i = 0; i < nevicata.getContaFiocchi(); i++)
-      nevicata.fiocco[i].movimentoFiocco();
+  nevicata.muoviFiocchi();
   
 }
+
+public void mousePressed()
+{
+  foresta.luceDiAlberoPremuta(mouseX, mouseY);
+}
+  

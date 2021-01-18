@@ -38,9 +38,9 @@ class FioccoDiNeve
    
    public void posizionaFiocco()    //setto dimensione e posizione rispetto alla x casuali e porto il fiocco in alto
    {
-     this.dim =random(MAX_DIM_FIOCCHI)+MIN_DIM_FIOCCHI;    
-     this.xFiocco =random(width);
+     this.dim = random(MAX_DIM_FIOCCHI)+MIN_DIM_FIOCCHI;    
+     this.xFiocco = random(width);
      this.altezza = 0;
-     this.velocita =random(MAX_VELOCITA) + MIN_VELOCITA;    //setto una velocita di caduta casuale di ogni fiocco
+     this.velocita = random(MAX_VELOCITA) + MIN_VELOCITA;    //setto una velocita di caduta casuale di ogni fiocco
    }
 }

@@ -1,4 +1,4 @@
-public class StellaCometa{
+class StellaCometa{
   
   // le coordinate corrispondono al punto in alto a sinistra della coda della stella 
   private float x;
@@ -68,7 +68,8 @@ public class StellaCometa{
     triangle(xPunteStella1_4, y, x + lunghezza, yPunteStella3_5, xPunteStella5_6, yPunteStella3_5);
   }
   
-  public void muoviCometa()  // metodo per il movimento della cometa: se è all'interno della schermata continua a muoversi verso destra, quando è completamente fuori, ricompare a sinistra
+  // metodo per il movimento della cometa: se è all'interno della schermata continua a muoversi verso destra, quando è completamente fuori, ricompare a sinistra
+  public void muoviCometa()  
   {
     if(x < height)
       x+=velocita;
